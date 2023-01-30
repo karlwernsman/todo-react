@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { NavLink, Redirect, useParams } from 'react-router-dom';
 import { useUser } from '../../context/UserContext.js';
 import { authUser } from '../../services/auth.js';
 
@@ -24,6 +24,11 @@ export default function Auth() {
 
   return (
     <div>
+      <h2>Todo List</h2>
+      <div>
+        <NavLink to="/auth/sign-in">Sign In</NavLink>
+        <NavLink to="/auth/sign-up">Sign Up</NavLink>
+      </div>
       <label>Email</label>
       <input
         type="email"
