@@ -3,8 +3,16 @@ import { Redirect } from 'react-router-dom';
 import { useUser } from '../../context/UserContext.js';
 import TodosForm from './TodosForm.js';
 import TodosList from './TodosList.js';
+import './Todos.css';
 
 export default function Todos() {
+  //   const handleClear = async () => {
+  //     try {
+  // delete
+  //     } catch (e) {
+  //       console.error(e.message);
+  //     }
+  //   };
   const { user } = useUser();
 
   if (!user) {
@@ -12,9 +20,12 @@ export default function Todos() {
   }
 
   return (
-    <div>
-      <TodosList />
-      <TodosForm />
+    <div className="mainContainer">
+      <div className="todoContainer">
+        <TodosForm />
+        <TodosList />
+        <button>Clear completed todos</button>
+      </div>
     </div>
   );
 }

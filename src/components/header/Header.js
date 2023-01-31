@@ -1,30 +1,37 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import { useUser } from '../../context/UserContext.js';
 import { signOut } from '../../services/auth.js';
+import './Header.css';
 
 export default function Header() {
   //   const [activeCookie, setActiveCookie] = useState(false);
   const { user, setUser } = useUser();
+  const history = useHistory();
 
   const handleLogout = async () => {
     try {
       await signOut();
       setUser(null);
+      history.push('/auth/sign-in');
     } catch (e) {
       console.error(e.message);
     }
   };
 
   return (
-    <div>
-      {!user && <Redirect to="/auth/sign-in" />}
+    <header>
+      {!user && <h1 className="noUserHeader">Todo List</h1>}
       {user && (
-        <div>
-          <p>Howdy, {user.email}!</p>
-          <button onClick={handleLogout}>Sign out</button>
+        <div className="headerUserContainer">
+          <span>Howdy, {user.email}!</span>
+
+          <Button variant="light" onClick={handleLogout} className="signOutButton">
+            Sign out
+          </Button>
         </div>
       )}
-    </div>
+    </header>
   );
 }

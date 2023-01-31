@@ -20,9 +20,9 @@ export default function TodosList() {
     <>
       {todos.map((todo) => (
         <div key={todo.id}>
-          <p onClick={() => handleComplete(todo)} className={`${todo.complete}`}>
+          <div onClick={() => handleComplete(todo)} className={`${todo.complete}`}>
             {todo.description}
-          </p>
+          </div>
         </div>
       ))}
     </>

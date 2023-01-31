@@ -1,7 +1,9 @@
 .true {
   text-decoration: line-through;
+  padding: 2px;
 }
 
 .false {
   text-decoration: none;
+  padding: 2px;
 }
