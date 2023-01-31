@@ -5,7 +5,7 @@ export async function getListTodos() {
   return checkError(response);
 }
 
-export async function createListTodo(description) {
-  const response = await client.from('todos').insert([{ description }]).single();
+export async function createListTodo(description, complete) {
+  const response = await client.from('todos').insert([{ description, complete }]).single();
   return checkError(response);
 }
