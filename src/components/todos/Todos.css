@@ -16,3 +16,12 @@
   border-radius: 10px 100px / 120px;
   box-shadow: 0 -10px 3px -3px #a3b18a, 0 10px 3px -3px #a3b18a;
 }
+
+.clearAllButton {
+  margin-top: 2px;
+  width: 190px;
+}
+.clearCompletedButton {
+  margin-top: 2px;
+  width: 190px;
+}

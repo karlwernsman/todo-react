@@ -23,6 +23,7 @@ export default function TodosList() {
           <div onClick={() => handleComplete(todo)} className={`${todo.complete}`}>
             {todo.description}
           </div>
+          {/* <button onClick={}>x</button> */}
         </div>
       ))}
     </>

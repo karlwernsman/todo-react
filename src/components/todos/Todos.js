@@ -4,21 +4,16 @@ import { useUser } from '../../context/UserContext.js';
 import TodosForm from './TodosForm.js';
 import TodosList from './TodosList.js';
 import './Todos.css';
+import { deleteCompleteItems, getListTodos } from '../../services/todos.js';
 import { useTodosContext } from '../../context/TodosContext.js';
 
 export default function Todos() {
-  const { todos, setTodos } = useTodosContext();
-  // const handleClearCompleted = async () => {
-  //   try {
-  //     setTodos();
-  //   } catch (e) {
-  //     console.error(e.message);
-  //   }
-  // };
-  const handleClearAll = async () => {
+  const { setTodos } = useTodosContext();
+  const handleDeleteCompleted = async () => {
     try {
-      let todos = [];
-      setTodos(todos);
+      deleteCompleteItems();
+      const getTodos = await getListTodos();
+      setTodos(getTodos);
     } catch (e) {
       console.error(e.message);
     }
@@ -34,8 +29,9 @@ export default function Todos() {
       <div className="todoContainer">
         <TodosForm />
         <TodosList />
-        <button>Clear completed todos</button>
-        <button onClick={handleClearAll}>Clear ALL todos</button>
+        <button onClick={handleDeleteCompleted} className="clearCompletedButton">
+          Clear completed todos
+        </button>
       </div>
     </div>
   );

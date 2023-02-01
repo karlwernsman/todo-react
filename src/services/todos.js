@@ -19,3 +19,13 @@ export async function toggleTodoItem({ id, complete }) {
 
   return checkError(response);
 }
+export async function deleteCompleteItems() {
+  const response = await client.from('todos').delete().match({ complete: true });
+
+  return checkError(response);
+}
+export async function deleteItem({ id }) {
+  const response = await client.from('todos').delete().match({ id });
+
+  return checkError(response);
+}
