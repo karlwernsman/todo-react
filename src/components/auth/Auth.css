@@ -1,0 +1,62 @@
+.authContainer {
+  height: 90vh;
+  background-color: #e9edc9;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container {
+  width: 60vw;
+  min-height: 45vh;
+  background-color: #fefae0;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  border-radius: 10px 100px / 120px;
+  box-shadow: 0 -10px 3px -3px #a3b18a, 0 10px 3px -3px #a3b18a;
+}
+
+.navContainer {
+  text-align: center;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.navLink {
+  text-decoration: none;
+  color: black;
+}
+
+.signInContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.submitButton {
+  width: 80px;
+  display: flex;
+  margin-top: 10px;
+}
+
+.emailContainer {
+  gap: 10px;
+}
+
+.loginInput {
+  margin-left: 5px;
+}

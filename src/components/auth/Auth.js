@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
 import { useUser } from '../../context/UserContext.js';
 import { authUser } from '../../services/auth.js';
+import './Auth.css';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
@@ -23,27 +24,42 @@ export default function Auth() {
   };
 
   return (
-    <div>
-      <h2>Todo List</h2>
-      <div>
-        <NavLink to="/auth/sign-in">Sign In</NavLink>
-        <NavLink to="/auth/sign-up">Sign Up</NavLink>
+    <div className="authContainer">
+      <div className="container">
+        <div className="navContainer">
+          <NavLink to="/auth/sign-in" className="navLink signIn">
+            Sign In
+          </NavLink>
+          <NavLink to="/auth/sign-up" className="navLink signOut">
+            Sign Up
+          </NavLink>
+        </div>
+        <div className="signInContainer">
+          <div className="emailContainer">
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="loginInput"
+            />
+          </div>
+          <div className="emailContainer">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="loginInput"
+            />
+          </div>
+        </div>
+        <button onClick={submitAuth} className="submitButton">
+          Submit
+        </button>
       </div>
-      <label>Email</label>
-      <input
-        type="email"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label>Password</label>
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={submitAuth}>Submit</button>
     </div>
   );
 }

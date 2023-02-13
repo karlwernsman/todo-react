@@ -1,5 +1,5 @@
 import { useTodosContext } from '../../context/TodosContext.js';
-import { getListTodos, toggleTodoItem } from '../../services/todos.js';
+import { deleteItem, getListTodos, toggleTodoItem } from '../../services/todos.js';
 import './TodoList.css';
 
 export default function TodosList() {
@@ -16,15 +16,28 @@ export default function TodosList() {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      deleteItem(id);
+      const getTodos = await getListTodos();
+      setTodos(getTodos);
+    } catch (e) {
+      console.error(e.message);
+    }
+  };
+
   return (
-    <>
+    <div>
       {todos.map((todo) => (
-        <div key={todo.id}>
-          <p onClick={() => handleComplete(todo)} className={`${todo.complete}`}>
+        <ul key={todo.id} className="todo">
+          <li onClick={() => handleComplete(todo)} className={`${todo.complete}`}>
             {todo.description}
-          </p>
-        </div>
+          </li>
+          <button onClick={() => handleDelete(todo.id)} className="trashButton">
+            🗑
+          </button>
+        </ul>
       ))}
-    </>
+    </div>
   );
 }

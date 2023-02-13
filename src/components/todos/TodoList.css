@@ -1,7 +1,21 @@
 .true {
   text-decoration: line-through;
+  padding: 2px;
 }
 
 .false {
   text-decoration: none;
+  padding: 2px;
+}
+
+.todo {
+  margin-top: 3px;
+  display: flex;
+  gap: 5px;
+  margin-bottom: 3px;
+}
+
+.trashButton {
+  background: none;
+  border: none;
 }
